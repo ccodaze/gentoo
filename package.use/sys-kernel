@@ -1,0 +1,3 @@
+sys-kernel/linux-firmware deduplicate
+sys-kernel/installkernel dracut
+sys-kernel/gentoo-kernel modules-compress savedconfig

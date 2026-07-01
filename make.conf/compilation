@@ -1,0 +1,17 @@
+# flags
+COMMON_FLAGS="-march=arrowlake-s -O2 -pipe \
+		-ftrivial-auto-var-init=zero -fzero-call-used-regs=used-gpr -flto \
+		-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3"
+CFLAGS="${COMMON_FLAGS}"
+CXXFLAGS="${COMMON_FLAGS}"
+FCFLAGS="${COMMON_FLAGS}"
+FFLAGS="${COMMON_FLAGS}"
+RUSTFLAGS="-C target-cpu=arrowlake-s"
+LDFLAGS="${COMMON_FLAGS} ${LDFLAGS}"
+
+# jobs
+MAKEOPTS="-j16 -l20"
+
+# env
+PORTAGE_TMPDIR=/tmp
+EMERGE_DEFAULT_OPTS="-a -j4 -l20"

@@ -1,0 +1,4 @@
+
+GENTOO_MIRRORS="http://www.gtlib.gatech.edu/pub/gentoo \
+    https://mirror.cs.odu.edu/ \
+    https://mirror.umd.edu/gentoo/"

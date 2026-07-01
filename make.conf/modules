@@ -1,0 +1,3 @@
+USE="${USE} modules-sign"
+MODULES_SIGN_KEY="/etc/kernel/kernel_key.pem"
+MODULES_SIGN_HASH="sha512"
