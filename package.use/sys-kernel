@@ -1,3 +1,4 @@
 sys-kernel/linux-firmware deduplicate
-sys-kernel/installkernel dracut
-sys-kernel/gentoo-kernel modules-compress savedconfig
+sys-kernel/linux-firmware compress-zstd
+sys-kernel/gentoo-sources experimental symlink
+sys-kernel/installkernel ugrd

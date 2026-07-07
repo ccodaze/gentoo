@@ -1,0 +1,3 @@
+POLLY="-mllvm -polly -mllvm -polly-vectorizer=stripmine -mllvm -polly-omp-backend=LLVM -mllvm -polly-parallel -mllvm -polly-num-threads=20 -mllvm -polly-scheduling=dynamic"
+CFLAGS="${CFLAGS} ${POLLY}"
+CXXFLAGS="${CXXFLAGS} ${POLLY}"

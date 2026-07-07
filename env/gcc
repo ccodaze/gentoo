@@ -1,0 +1,15 @@
+CC=gcc
+CXX=g++
+AR="gcc-ar"
+RANLIB="gcc-ranlib"
+NM="gcc-nm"
+
+COMMON_FLAGS="-march=arrowlake-s -O3 -pipe -flto=auto -fno-semantic-interposition $HARDENING_FLAGS $FORTIFY_SOURCE_FLAGS"
+
+CFLAGS="$GCC_COMMON_FLAGS"
+CXXFLAGS="$GCC_COMMON_FLAGS"
+CCASFLAGS="$GCC_COMMON_FLAGS"
+FCFLAGS="$GCC_COMMON_FLAGS"
+FFLAGS="$GCC_COMMON_FLAGS"
+
+LDFLAGS="$LDFLAGS -Wl,-z,relro -Wl,-z,now -flto=auto -fuse-ld=mold"

@@ -1,0 +1,4 @@
+app-arch/zstd polly
+media-libs/* polly
+sci-libs/* polly
+sci-physics/* polly

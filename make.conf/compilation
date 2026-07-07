@@ -1,17 +1,25 @@
 # flags
-COMMON_FLAGS="-march=arrowlake-s -O2 -pipe \
-		-ftrivial-auto-var-init=zero -fzero-call-used-regs=used-gpr -flto \
-		-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3"
-CFLAGS="${COMMON_FLAGS}"
-CXXFLAGS="${COMMON_FLAGS}"
-FCFLAGS="${COMMON_FLAGS}"
-FFLAGS="${COMMON_FLAGS}"
-RUSTFLAGS="-C target-cpu=arrowlake-s"
-LDFLAGS="${COMMON_FLAGS} ${LDFLAGS}"
+HARDENING_FLAGS="-fno-plt -fstack-protector-strong -fstack-clash-protection -fcf-protection=full -D_GLIBCXX_ASSERTIONS -fstrict-flex-arrays=3"
+FORTIFY_SOURCE_FLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3"
+LTO_FLAGS="-flto=thin"
+
+COMMON_FLAGS="-march=arrowlake-s -O2 -pipe"
+
+CFLAGS="$COMMON_FLAGS $LTO_FLAGS $HARDENING_FLAGS $FORTIFY_SOURCE_FLAGS"
+CXXFLAGS="$COMMON_FLAGS $LTO_FLAGS $HARDENING_FLAGS $FORTIFY_SOURCE_FLAGS"
+CCASFLAGS="$COMMON_FLAGS $LTO_FLAGS $HARDENING_FLAGS $FORTIFY_SOURCE_FLAGS"
+FCFLAGS="$COMMON_FLAGS $LTO_FLAGS $HARDENING_FLAGS $FORTIFY_SOURCE_FLAGS"
+FFLAGS="$COMMON_FLAGS $LTO_FLAGS $HARDENING_FLAGS $FORTIFY_SOURCE_FLAGS"
+
+LDFLAGS="$LDFLAGS -Wl,-z,relro -Wl,-z,now -flto=thin -fuse-ld=mold"
+
+RUST_LTO_FLAGS="-C linker-plugin-lto"
+RUST_COMMON_FLAGS="-C target-cpu=arrowlake-s -C strip=debuginfo -C link-arg=-fuse-ld=lld"
+RUSTFLAGS="$RUST_COMMON_FLAGS $RUST_LTO_FLAGS"
 
 # jobs
 MAKEOPTS="-j16 -l20"
 
 # env
-PORTAGE_TMPDIR=/tmp
-EMERGE_DEFAULT_OPTS="-a -j4 -l20"
+PORTAGE_TMPDIR=/var/tmp
+EMERGE_DEFAULT_OPTS="-a" #-j4 -l22

@@ -1,0 +1,1 @@
+*/* LLVM_TARGETS: AArch64 AMDGPU ARM BPF RISCV SPIRV WebAssembly X86 -AVR -Hexagon -Lanai -MSP430 -Mips -NVPTX -PowerPC -Sparc -SystemZ -XCore
